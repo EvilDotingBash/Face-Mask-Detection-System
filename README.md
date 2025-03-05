@@ -1,12 +1,14 @@
 
+# Face Mask Detection System
+
 ## Overview
 The **Face Mask Detection System** is a deep learning-based application that detects whether a person is wearing a face mask or not. It utilizes **Convolutional Neural Networks (CNNs)** for image classification and is trained on a dataset of masked and unmasked faces.
 
 ## Features
-✅ Real-time face mask detection using a webcam or pre-recorded images.
-✅ Trained with a deep CNN model for high accuracy.
-✅ Utilizes OpenCV for image preprocessing and face detection.
-✅ Supports deployment on various platforms, including mobile and web applications.
+✅ Real-time face mask detection using a webcam or pre-recorded images.  
+✅ Trained with a deep CNN model for high accuracy.  
+✅ Utilizes OpenCV for image preprocessing and face detection.  
+✅ Supports deployment on various platforms, including mobile and web applications.  
 ✅ Interactive visualization of predictions and confidence scores.
 
 ## Technologies Used
@@ -14,7 +16,8 @@ The **Face Mask Detection System** is a deep learning-based application that det
 🐍 **Programming Language**: Python  
 📷 **Image Processing**: OpenCV  
 📂 **Dataset**: Publicly available face mask datasets  
-🏗️ **Model Architecture**: Convolutional Neural Networks (CNNs)
+🏗️ **Model Architecture**: Convolutional Neural Networks (CNNs)  
+🖥️ **Backend**: Flask/FastAPI (for API development)  
 
 ## Dataset
 The dataset consists of images categorized into two classes:
@@ -26,8 +29,8 @@ The images are preprocessed, augmented, and split into training and testing sets
 ## Installation
 1️⃣ Clone the repository:
    ```sh
-   git clone https://github.com/your-repository/face-mask-detection.git
-   cd face-mask-detection
+   git clone https://github.com/EvilDotingBash/Face-Mask-Detection-System.git
+   cd Face-Mask-Detection-System
    ```
 2️⃣ Install required dependencies:
    ```sh
@@ -48,6 +51,13 @@ This will train the CNN model using the specified dataset and save the trained m
 python detect_mask.py
 ```
 
+## Backend API
+The system includes a backend API to facilitate model predictions. Run the backend with:
+```sh
+python backend.py
+```
+This starts the API server to handle face mask detection requests.
+
 ## Results
 📊 **Achieved high accuracy** in mask detection.  
 📈 The model generalizes well on unseen images.  
@@ -64,4 +74,7 @@ python detect_mask.py
 
 ## License
 📜 This project is licensed under the MIT License - see the LICENSE file for details.
+
+## Repository Link
+🔗 [GitHub Repository](https://github.com/EvilDotingBash/Face-Mask-Detection-System)
 
