@@ -1,4 +1,3 @@
-
 # Face Mask Detection System
 
 ## Overview
@@ -17,7 +16,12 @@ The **Face Mask Detection System** is a deep learning-based application that det
 📷 **Image Processing**: OpenCV  
 📂 **Dataset**: Publicly available face mask datasets  
 🏗️ **Model Architecture**: Convolutional Neural Networks (CNNs)  
-🖥️ **Backend**: Flask/FastAPI (for API development)  
+🖥️ **Backend**: Streamlit (for interactive UI)  
+
+## Files Structure
+- **cnn.py**: Contains the CNN model architecture and training pipeline.  
+- **backend.py**: Manages the backend logic using Streamlit for UI and API integration.  
+- **main.py**: The entry point to run the full system, integrating the model and backend.  
 
 ## Dataset
 The dataset consists of images categorized into two classes:
@@ -32,31 +36,31 @@ The images are preprocessed, augmented, and split into training and testing sets
    git clone https://github.com/EvilDotingBash/Face-Mask-Detection-System.git
    cd Face-Mask-Detection-System
    ```
-2️⃣ Install required dependencies:
+2️⃣ Install the required dependencies manually:
    ```sh
-   pip install -r requirements.txt
+   pip install tensorflow opencv-python streamlit numpy pandas matplotlib
    ```
 3️⃣ Download and prepare the dataset.
 
 ## Model Training
 🚀 To train the model, run:
 ```sh
-python train.py
+python cnn.py
 ```
 This will train the CNN model using the specified dataset and save the trained model for inference.
 
 ## Running the Face Mask Detector
 🎥 To detect masks in real-time using a webcam, execute:
 ```sh
-python detect_mask.py
+python main.py
 ```
 
-## Backend API
-The system includes a backend API to facilitate model predictions. Run the backend with:
+## Backend & UI
+The system includes a **Streamlit** backend for an interactive user interface. Run the application with:
 ```sh
-python backend.py
+streamlit run backend.py
 ```
-This starts the API server to handle face mask detection requests.
+This will launch a web-based interface for face mask detection.
 
 ## Results
 📊 **Achieved high accuracy** in mask detection.  
@@ -68,6 +72,10 @@ This starts the API server to handle face mask detection requests.
 📱 Deploy the model as a web or mobile application.  
 ⚡ Optimize inference speed for real-time applications.  
 🎮 Add an interactive UI for better user experience.
+
+## Deployment
+🚀 The application is deployed and accessible at:
+🔗 [Live Demo](https://dummy-deployment-link.com)
 
 ## Contributors
 👩‍💻 **Your Name** (Add your details here)
