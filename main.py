@@ -88,6 +88,9 @@ import os
 from keras.models import load_model
 from keras.utils import img_to_array,load_img
 import numpy as np
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase
+import av
+
 st.set_page_config(page_title='Face Mask Detection',page_icon='https://5.imimg.com/data5/PI/FD/NK/SELLER-5866466/images-500x500.jpg')
 # Check if files exist
 if not os.path.exists("mask1.h5"):
@@ -124,7 +127,35 @@ elif(s=='IMAGE'):
                  cv2.rectangle(img,(x,y),(x+l,y+w),(0,255,0),8)
          st.image(img,channels='BGR')
 
-elif s == 'WEB CAM':
+elif s == "WEB CAM":
+    st.markdown("<h2 style='text-align: center;'>Live Face Mask Detection</h2>", unsafe_allow_html=True)
+
+    class FaceMaskTransformer(VideoTransformerBase):
+        def transform(self, frame):
+            img = frame.to_ndarray(format="bgr24")
+            faces = facemodel.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(50, 50))
+
+            for (x, y, w, h) in faces:
+                face_img = img[y:y+h, x:x+w]
+                face_img = cv2.resize(face_img, (150, 150))
+                face_img = img_to_array(face_img) / 255.0
+                face_img = np.expand_dims(face_img, axis=0)
+
+                pred = maskmodel.predict(face_img)[0][0]
+                color = (0, 0,255) if pred < 0.5 else (0, 255,0)  # Green = Mask, Red = No Mask
+                label = "No Mask" if pred < 0.5 else " Mask"
+
+                cv2.rectangle(img, (x, y), (x + w, y + h), color, 3)
+                cv2.putText(img, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
+
+            return av.VideoFrame.from_ndarray(img, format="bgr24")
+
+    webrtc_streamer(
+        key="face-mask",
+        video_transformer_factory=FaceMaskTransformer,
+        media_stream_constraints={"video": True, "audio": False}
+        
+'''elif s == 'WEB CAM':
     cam_index = st.text_input("Enter 0 for Primary Camera or 1 for Secondary Camera", "0")
     btn = st.button('Start Camera')
 
@@ -161,4 +192,4 @@ elif s == 'WEB CAM':
                 vid.release()
                 st.experimental_rerun()  
 
-        vid.release()
+        vid.release()'''
