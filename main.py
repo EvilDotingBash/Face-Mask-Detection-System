@@ -81,7 +81,7 @@ elif s == "WEB CAM":
         video_transformer_factory=FaceMaskTransformer,
         media_stream_constraints={"video": True, "audio": False}  # Ensures webcam is properly accessed
     )'''
-mport cv2 
+import cv2 
 import streamlit as st
 import cv2
 import os
