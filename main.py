@@ -1,4 +1,10 @@
-pip install opencv-python-headless
+import os
+import subprocess
+try:
+    import cv2
+except ModuleNotFoundError:
+    subprocess.check_call(["pip", "install", "opencv-python-headless"])
+    import cv2  
 import streamlit as st
 import cv2
 import os
