@@ -39,19 +39,19 @@ elif s == "IMAGE":
          img = cv2.imdecode(np.frombuffer(file.getvalue(), np.uint8), cv2.IMREAD_COLOR)
          faces = facemodel.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(50, 50))
 
-        for (x, y, w, h) in faces:
-            face_img = cv2.resize(img[y:y+h, x:x+w], (150, 150))
-            face_img = img_to_array(face_img) / 255.0
-            face_img = np.expand_dims(face_img, axis=0)
+         for (x, y, w, h) in faces:
+             face_img = cv2.resize(img[y:y+h, x:x+w], (150, 150))
+             face_img = img_to_array(face_img) / 255.0
+             face_img = np.expand_dims(face_img, axis=0)
 
-            pred = maskmodel.predict(face_img)[0][0]
-            color = (0, 255, 0) if pred > 0.5 else (0, 0, 255)
-            label = "Mask" if pred > 0.5 else "No Mask"
+             pred = maskmodel.predict(face_img)[0][0]
+             color = (0, 255, 0) if pred > 0.5 else (0, 0, 255)
+             label = "Mask" if pred > 0.5 else "No Mask"
 
-            cv2.rectangle(img, (x, y), (x + w, y + h), color, 3)
-            cv2.putText(img, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
+             cv2.rectangle(img, (x, y), (x + w, y + h), color, 3)
+             cv2.putText(img, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
 
-        st.image(img, channels="BGR")
+         st.image(img, channels="BGR")
 
 elif s == "WEB CAM":
     st.markdown("<h2 style='text-align: center;'>Live Face Mask Detection</h2>", unsafe_allow_html=True)
