@@ -154,6 +154,7 @@ elif s == "WEB CAM":
         key="face-mask",
         video_transformer_factory=FaceMaskTransformer,
         media_stream_constraints={"video": True, "audio": False}
+    )
         
 '''elif s == 'WEB CAM':
     cam_index = st.text_input("Enter 0 for Primary Camera or 1 for Secondary Camera", "0")
