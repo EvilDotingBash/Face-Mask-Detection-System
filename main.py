@@ -74,41 +74,4 @@ elif s == "WEB CAM":
         media_stream_constraints={"video": True, "audio": False}
     )
         
-'''elif s == 'WEB CAM':
-    cam_index = st.text_input("Enter 0 for Primary Camera or 1 for Secondary Camera", "0")
-    btn = st.button('Start Camera')
 
-    if btn:
-        k = int(cam_index)
-        vid = cv2.VideoCapture(k)
-        window = st.empty()  # Placeholder for updating frames
-        
-        stop_btn = st.button('Stop Camera')
-
-        while vid.isOpened():
-            flag, frame = vid.read()
-            if not flag:
-                break  # Stop if no frame is read
-
-            faces = facemodel.detectMultiScale(frame, scaleFactor=1.1, minNeighbors=5, minSize=(50, 50))
-
-            for (x, y, w, h) in faces:
-                face_img = frame[y:y+h, x:x+w]
-                face_img = cv2.resize(face_img, (150, 150))
-                face_img = img_to_array(face_img) / 255.0  # Normalize
-                face_img = np.expand_dims(face_img, axis=0)
-
-                pred = maskmodel.predict(face_img)[0][0]
-                color = (0, 0,255) if pred < 0.5 else (0, 255,0)  # Green = Mask, Red = No Mask
-                label = "No Mask" if pred < 0.5 else " Mask"
-
-                cv2.rectangle(frame, (x, y), (x + w, y + h), color, 2)
-                cv2.putText(frame, label, (x, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, color, 2)
-
-            window.image(frame, channels='BGR')  
-
-            if stop_btn:
-                vid.release()
-                st.experimental_rerun()  
-
-        vid.release()'''
