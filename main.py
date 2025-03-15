@@ -33,7 +33,7 @@ if s == "Home":
 
 elif s == "IMAGE":
      st.markdown("<h2 style='text-align: center;'>IMAGE DETECTION</h2>", unsafe_allow_html=True)
-    file = st.file_uploader("Upload an Image")
+     file = st.file_uploader("Upload an Image")
 
     if file:
         img = cv2.imdecode(np.frombuffer(file.getvalue(), np.uint8), cv2.IMREAD_COLOR)
