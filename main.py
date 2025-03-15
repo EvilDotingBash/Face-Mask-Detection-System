@@ -35,9 +35,9 @@ elif s == "IMAGE":
      st.markdown("<h2 style='text-align: center;'>IMAGE DETECTION</h2>", unsafe_allow_html=True)
      file = st.file_uploader("Upload an Image")
 
-    if file:
-        img = cv2.imdecode(np.frombuffer(file.getvalue(), np.uint8), cv2.IMREAD_COLOR)
-        faces = facemodel.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(50, 50))
+     if file:
+         img = cv2.imdecode(np.frombuffer(file.getvalue(), np.uint8), cv2.IMREAD_COLOR)
+         faces = facemodel.detectMultiScale(img, scaleFactor=1.1, minNeighbors=5, minSize=(50, 50))
 
         for (x, y, w, h) in faces:
             face_img = cv2.resize(img[y:y+h, x:x+w], (150, 150))
