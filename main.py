@@ -32,7 +32,7 @@ if s == "Home":
     st.image("https://cdn.dribbble.com/users/1815739/screenshots/12127262/dribbble_facemask_v1.gif")
 
 elif s == "IMAGE":
-    st.markdown("<h2 style='text-align: center;'>IMAGE DETECTION</h2>", unsafe_allow_html=True)
+     st.markdown("<h2 style='text-align: center;'>IMAGE DETECTION</h2>", unsafe_allow_html=True)
     file = st.file_uploader("Upload an Image")
 
     if file:
