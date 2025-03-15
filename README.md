@@ -75,7 +75,7 @@ This will launch a web-based interface for face mask detection.
 
 ## Deployment
 🚀 The application is deployed and accessible at:
-🔗 [Live Demo](https://dummy-deployment-link.com)
+🔗 https://face-mask-detection-system-lxh2mrntfed9bt3bfx5uld.streamlit.app/
 
 ## Contributors
 👩‍💻 **Your Name** (Add your details here)
